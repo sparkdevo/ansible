@@ -21,6 +21,7 @@ RUN echo "===> Adding Ansible's PPA..."  && \
     apt-get install -y python-pip              && \
     pip install --upgrade pywinrm              && \
     apt-get install -y sshpass openssh-client  && \
+    apt-get install -y vim                     && \
     \
     \
     echo "===> Removing Ansible PPA..."  && \
