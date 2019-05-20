@@ -1,0 +1,7 @@
+- name: es 6.2.4
+  hosts: es-node-3 
+  roles:
+    - role: elastic.elasticsearch
+      become: yes
+      vars:
+        es_instance_name: "es-node-3"

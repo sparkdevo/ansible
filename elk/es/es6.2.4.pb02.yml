@@ -1,0 +1,12 @@
+- name: es 6.2.4
+  hosts: es-node-3 
+  roles:
+    - role: elastic.elasticsearch
+      become: yes
+  vars:
+    es_instance_name: "es-node-3"
+    es_config:
+      node.name: "es-node-3"
+      network.host: "0.0.0.0"
+      node.master: true
+    es_heap_size: 4g
