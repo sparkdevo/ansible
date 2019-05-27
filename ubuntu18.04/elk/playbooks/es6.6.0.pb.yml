@@ -5,6 +5,7 @@
     - role: elastic.elasticsearch
       become: yes
   vars:
+    cluster.name: "test-cluster"
     es_instance_name: "es-node-1"
     es_config:
       node.name: "es-node-1"

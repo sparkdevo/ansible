@@ -1,2 +1,9 @@
 [esnodes]
-xxx.xxx.xxx.xxx
+10.32.1.100
+
+[esnode1]
+10.32.1.100
+
+[esnode2]
+10.32.1.86
+
