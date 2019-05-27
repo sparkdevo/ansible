@@ -1,0 +1,19 @@
+- name: es 6.6.0
+  hosts: esnodes
+  roles:
+    - role: elastic.elasticsearch
+      become: yes
+  vars:
+    es_instance_name: "es-node-1"
+    es_config:
+      node.name: "es-node-1"
+      network.host: "0.0.0.0"
+      node.master: true
+      #xpack.security.authc.realms.file1.order: 0
+      #xpack.security.authc.realms.file1.type: file
+      #xpack.security.authc.realms.native1.order: 1
+      #xpack.security.authc.realms.native1.type: native
+    es_heap_size: 4g
+    #es_api_basic_auth_username: elastic
+    #es_api_basic_auth_password: xA123456
+    es_enable_xpack: false
