@@ -1,0 +1,15 @@
+---
+- name: es 6.6.0
+  hosts: esnodes
+  roles:
+    - role: elastic.elasticsearch
+      become: yes
+  vars:
+    cluster.name: "test-cluster"
+    es_instance_name: "es-node-1"
+    es_config:
+      node.name: "es-node-1"
+      network.host: "0.0.0.0"
+      node.master: true
+    es_heap_size: 4g
+    es_enable_xpack: false

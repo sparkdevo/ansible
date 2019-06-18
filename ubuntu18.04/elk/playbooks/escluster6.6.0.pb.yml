@@ -1,0 +1,38 @@
+---
+- name: es cluster 6.6.0 node1
+  hosts: esnode1
+  roles:
+    - role: elastic.elasticsearch
+      become: yes
+  vars:
+    es_instance_name: "es-node-1"
+    es_config:
+      cluster.name: "test-cluster"
+      #discovery.seed_hosts: 
+      discovery.zen.ping.unicast.hosts:
+        - 10.32.1.100
+        - 10.32.1.86
+      discovery.zen.minimum_master_nodes: 1
+      node.name: "es-node-1"
+      network.host: "0.0.0.0"
+      node.master: true
+    es_heap_size: 4g
+    es_enable_xpack: false
+    
+- name: es cluster 6.6.0 node2
+  hosts: esnode2
+  roles:
+    - role: elastic.elasticsearch
+      become: yes
+  vars:
+    es_instance_name: "es-node-2"
+    es_config:
+      cluster.name: "test-cluster"
+      #discovery.seed_hosts: "10.32.1.100"
+      discovery.zen.ping.unicast.hosts: 10.32.1.100
+      discovery.zen.minimum_master_nodes: 1
+      node.name: "es-node-2"
+      network.host: "0.0.0.0"
+      node.master: true
+    es_heap_size: 4g
+    es_enable_xpack: false
