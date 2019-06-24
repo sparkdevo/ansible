@@ -1,6 +1,7 @@
-build image:
+build image:  
 $ docker build -t sparkdev/ansible:azure .
 
+run playbook:  
 docker run --rm \\  
 &ensp;&ensp;&ensp;&ensp;-e AZURE_SUBSCRIPTION_ID=xxx \\  
 &ensp;&ensp;&ensp;&ensp;-e AZURE_CLIENT_ID=xxx \\  
