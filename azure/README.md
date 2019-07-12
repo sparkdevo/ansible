@@ -1,6 +1,6 @@
 build image:  
 ```sh
-$ docker build -t sparkdev/ansible:azure .
+$ docker build -t sparkdev/ansible:azure2.8 .
 ```
 
 run playbook:  
@@ -12,5 +12,5 @@ $ docker run --rm \
     -e AZURE_TENANT=xxx \  
     --mount type=bind,source=${PWD},target=/workdir \  
     -w=/workdir \  
-    sparkdev/ansible:azure ansible-playbook test.pb.yml
+    sparkdev/ansible:azure2.8 ansible-playbook test.pb.yml
 ```
