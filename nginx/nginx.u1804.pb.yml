@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: true
+
+  tasks:
+    - name: Install nginx 
+      apt: name=nginx state=latest update_cache=yes force_apt_get=yes
+    - name: copy nginx config file
+      copy: src=nginx.conf dest=/etc/nginx/nginx.conf
+    - name: reload nginx
+      systemd: name=nginx state=reloaded
