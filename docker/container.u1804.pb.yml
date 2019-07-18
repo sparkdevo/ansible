@@ -4,19 +4,40 @@
   vars:
     default_container_name: nodedemo
     default_container_image: "sparkdev/nodedemo:appinsightsdemo"
+    mongo_container_name: nodedemo-mongodb
+    mongo_container_image: "mongo:3.4"
+    docker_network_name: nodedemonet
   tasks:
     # Pull image specified by variable default_image from the Docker Hub
     - name: Pull default Docker image
       docker_image:
         name: "{{ default_container_image }}"
         source: pull
+    
+    # Create a new network
+    - name: Create demo app network
+      docker_network:
+        name: "{{ docker_network_name }}"
 
-    # Creates the number of containers defined by the variable create_containers, using default values
-    - name: Create default containers
+    # Creates demo containers
+    - name: Create demo mongodb container 
+      docker_container:
+        name: "{{ mongo_container_name }}"
+        image: "{{ mongo_container_image }}"
+        restart_policy: always
+        networks:
+         - name: "{{ docker_network_name }}"
+        volumes:
+         - /mongodata
+    - name: Create node demo app container 
       docker_container:
         name: "{{ default_container_name }}"
         image: "{{ default_container_image }}"
-        #state: present
         restart_policy: always
         ports:
          - "127.0.0.1:3000:3000"
+        networks:
+         - name: "{{ docker_network_name }}"
+        env:
+          MONGOSVR: "{{ mongo_container_name }}"
+          AZUREAPPINSIGHTSKEY: ""

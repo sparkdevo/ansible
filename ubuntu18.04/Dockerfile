@@ -27,6 +27,7 @@ RUN echo "===> Adding Ansible's PPA..."  && \
     \
     \
     echo "===> Adding hosts for convenience..."  && \
-    echo 'localhost' > /etc/ansible/hosts
+    echo 'localhost' > /etc/ansible/hosts        && \
+    echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
 CMD [ "ansible-playbook", "--version" ]

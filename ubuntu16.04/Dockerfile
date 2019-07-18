@@ -24,6 +24,10 @@ RUN echo "===> Adding Ansible's PPA..."  && \
     apt-get install -y vim                     && \
     \
     \
+    echo "===> Installing docker role" && \
+    ansible-galaxy install geerlingguy.docker  && \
+    \
+    \
     echo "===> Removing Ansible PPA..."  && \
     rm -rf /var/lib/apt/lists/*  /etc/apt/sources.list.d/ansible.list  && \
     \
