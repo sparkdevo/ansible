@@ -25,6 +25,7 @@
         name: "{{ mongo_container_name }}"
         image: "{{ mongo_container_image }}"
         restart_policy: always
+        networks_cli_compatible: yes
         networks:
          - name: "{{ docker_network_name }}"
         volumes:
@@ -36,6 +37,7 @@
         restart_policy: always
         ports:
          - "127.0.0.1:3000:3000"
+        networks_cli_compatible: yes
         networks:
          - name: "{{ docker_network_name }}"
         env:
