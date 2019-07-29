@@ -1,0 +1,9 @@
+---
+- hosts: xa-lsr-ci 
+  vars:
+    jenkins_hostname: xa-lsr-ci 
+  roles:
+    - role: geerlingguy.java
+      become: yes
+    - role: geerlingguy.jenkins
+      become: yes
